@@ -9,7 +9,12 @@ const routes: RouteProps[] = [
     {
         path: '/',
         exact: true,
-        component: lazy(() => import("@pages/Home/Home"))
+        component: lazy(() => import('@pages/Home/Home'))
+    },
+    {
+        path: '/login',
+        exact: true,
+        component: lazy(() => import('@pages/Login/Login'))
     }
 ]
 

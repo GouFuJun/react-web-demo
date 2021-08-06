@@ -7,7 +7,7 @@ const Home:FC = () => {
             <div className='banner-box'>
                 {/* 轮播组件 swiper */}
                 {/* <Swiper /> */}
-                home
+                home--h2
             </div>
         </div>
     );

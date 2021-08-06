@@ -1,6 +1,6 @@
 ## 技术栈
 
-前端：React + react-router + axios + TypeScript + Recoil + Hooks + cssnext
+前端：React + react-router + axios + TypeScript + Recoil(状态管理) + Hooks + cssnext
 
 后端：BFF Node Koa Serverless 函数计算 OSS
 

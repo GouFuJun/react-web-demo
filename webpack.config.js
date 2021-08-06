@@ -37,6 +37,7 @@ const webpackBaseConfig = {
     resolve: {
         alias: {
             "@assets": resolve("src/assets"),
+            "@images": resolve("src/assets/images"),
             "@components": resolve("src/components"),
             "@models": resolve("src/models"),
             "@routes": resolve("src/routes"),

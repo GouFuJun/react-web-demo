@@ -1,7 +1,9 @@
 const { join, resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // css压缩插件
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+// js压缩
+const TerserPlugin = require("terser-webpack-plugin");
 // 清除
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -10,10 +12,31 @@ module.exports = {
     output: {
         assetModuleFilename: 'images/[name].[contenthash:5].bundle.[ext]',
         filename: 'scripts/[name].[contenthash:5].bundle.js',
-        publicPath: './'
+        chunkFilename: 'scripts/[name].[contenthash:5].chunk.bundle.js',
+        publicPath: '/'
     },
     optimization: {
         minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin({
+                test: /\.css$/g,
+                minimizerOptions: {
+                    preset: [
+                        'default',
+                        {
+                            discardComments: { removeAll: true },
+                        },
+                    ],
+                },
+            }),
+            new TerserPlugin({
+                terserOptions: {
+                    toplevel: true, // 最高级别，删除无用代码
+                    ie8: true,
+                    safari10: true,
+                }
+            })
+        ],
         runtimeChunk: {
             name: 'runtime'
         },
@@ -46,20 +69,6 @@ module.exports = {
                 removeComments: true,
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
-            }
-        }),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorOptions: {
-                preset: [
-                    'default',
-                    {
-                        discardComments: {
-                            removeAll: true
-                        }
-                    }
-                ]
             }
         })
     ]
