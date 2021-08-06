@@ -6,5 +6,5 @@ import App from '@pages/App';
 
 ReactDom.render(
     <App />,
-    document.querySelector('#main')
+    document.querySelector('#app')
 );
