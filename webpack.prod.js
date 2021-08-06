@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // css压缩插件
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // 清除
-const { cleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'production',
     output: {
         assetModuleFilename: 'images/[name].[contenthash:5].bundle.[ext]',
         filename: 'scripts/[name].[contenthash:5].bundle.js',
-        publicPath: '/assets'
+        publicPath: './'
     },
     optimization: {
         minimize: true,
@@ -37,6 +37,7 @@ module.exports = {
         }
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'VIP 网站 PROD版',
             filename: 'index.html',

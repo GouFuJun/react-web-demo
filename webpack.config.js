@@ -8,7 +8,7 @@ const _mode = argv.mode || 'development';
 const _modeFlag = _mode === 'development';
 // 根据模式读取需要合并的配置
 const _mergeConfig = require(`./webpack.${_modeFlag?'dev':'prod'}.js`);
-// css提取到单独文件
+// css提取到单独文件 -- 好像不支持 webpack5
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // css 解析
@@ -32,7 +32,7 @@ const webpackBaseConfig = {
         app: resolve('src/index.tsx')
     },
     output: {
-        path: join(__dirname, './dist/assets')
+        path: join(__dirname, './dist')
     },
     resolve: {
         alias: {
@@ -51,17 +51,17 @@ const webpackBaseConfig = {
     module: {
         rules: [
             {
-                test: /\.{js|jsx|ts|tsx}/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 include: [resolve('src')],
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             },
             {
-                test: /\.{css|scss}$/,
+                test: /\.(css|scss)$/,
                 use: cssLoaders
             },
             {
-                test: /\.{png|jpeg|gif|eot|woff|woff2|ttf|svg|otf|webp}$/,
+                test: /\.(png|jpg|jpeg|gif|eot|woff|woff2|ttf|svg|otf|webp)$/,
                 type: 'asset'
             }
         ]

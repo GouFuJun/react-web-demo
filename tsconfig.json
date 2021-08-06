@@ -2,6 +2,22 @@
     "compilerOptions": {
         "target": "es5",
         "jsx": "react",
-        "esModuleInterop": true
-    }
+        "esModuleInterop": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@components/*": ["components/*"],
+            "@utils/*": ["utils/*"],
+            "@assets/*": ["assets"],
+            "@models/*": ["models/*"],
+            "@routes/*": ["routes/*"],
+            "@pages/*": ["pages/*"],
+            "@tools/*": ["tools/*"],
+            "@recoil/*": ["recoil/*"],
+            "@hooks/*": ["hooks/*"],
+            "@services/*": ["services/*"],
+            "@api/*": ["api/*"]
+        }
+    },
+    "include": ["src", "tests"],
+    "exclude": ["node_modules"]
 }

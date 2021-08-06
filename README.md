@@ -58,3 +58,22 @@ npm i react react-dom react-router-dom
 // 安装 react ts申明
 npm i @types/react @types/react-dom @types/react-router-dom
 ```
+
+### 2、React 代码
+
+#### 2.2 router 实现
+
+## react 指示点
+
+1、useCallBack -- 缓存函数、useMono -- 缓存值 通过改变依赖更新
+2、useEffect -- 通过改变依赖更新
+```
+useEffect(()=>{}) // 一直重复执行
+useEffect(()=>{},[]) // 空依赖-只执行一次
+useEffect(()=>{},<name>) // 依赖变量，值改变--执行
+```
+3、hooks
+```
+useEffect
+use
+```
